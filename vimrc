@@ -65,6 +65,8 @@ Plug 'sirver/ultisnips'
 Plug 'honza/vim-snippets'
 "comment
 Plug 'tpope/vim-commentary'
+"im switch
+Plug 'brglng/vim-im-select'
 call plug#end()
 
 filetype plugin on
