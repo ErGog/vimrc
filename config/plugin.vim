@@ -90,6 +90,8 @@
         \ 'coc-marketplace',
         \ 'coc-vimlsp',
         \ 'coc-clangd',
+        \ 'coc-json',
+        \ 'coc-tsserver',
         \ 'coc-pairs'
         \ ]
   let g:coc_watch_extensions = []
@@ -170,4 +172,18 @@ let g:rainbow_load_separately = [
                         \ ]
 let g:rainbow_guifgs = ['RoyalBlue3', 'DarkOrange3', 'DarkOrchid3', 'FireBrick']
 let g:rainbow_ctermfgs = ['lightblue', 'lightgreen', 'yellow', 'red', 'magenta']
+"}}
+"
+
+"Ag{{
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
+"}}
+"
+"vim-autoformat{{
+nnoremap <C-f> :Autoformat<CR>
+let g:autoformat_verbosemode=1
+autocmd FileType proto au BufWrite * :Autoformat
+"autocmd FileType cpp au BufWrite * :Autoformat
 "}}

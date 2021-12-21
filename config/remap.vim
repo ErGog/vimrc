@@ -117,10 +117,10 @@
   nmap <silent> gr :call CocActionAsync('jumpUsed', v:false)<CR>
   nnoremap <silent> K :call CocActionAsync('doHover')<CR>
   " remap for complete to use tab and <cr>
-  " inoremap <silent><expr> <TAB>
-  "       \ pumvisible() ? "\<C-n>" :
-  "       \ <SID>check_back_space() ? "\<TAB>" :
-  "       \ coc#refresh()
+  inoremap <silent><expr> <TAB>
+        \ pumvisible() ? "\<C-n>" :
+        \ <SID>check_back_space() ? "\<TAB>" :
+        \ coc#refresh()
   inoremap <silent><expr> <c-space> coc#refresh()
   inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
   inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
@@ -132,6 +132,31 @@
   xmap ig <Plug>(coc-git-chunk-inner)
   omap ag <Plug>(coc-git-chunk-outer)
   xmap ag <Plug>(coc-git-chunk-outer)
+" }}
+"
+" fix complete with coc vim and snippets{{
+function! g:UltiSnips_Complete()
+    call UltiSnips#ExpandSnippet()
+    if g:ulti_expand_res == 0
+        if pumvisible()
+            return "\<C-n>"
+        else
+            call UltiSnips#JumpForwards()
+            if g:ulti_jump_forwards_res == 0
+               return "\<TAB>"
+            endif
+        endif
+    endif
+    return ""
+endfunction
+
+au BufEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsListSnippets="<c-e>"
+" this mapping Enter key to <C-y> to chose the current highlight item 
+" and close the selection list, same as other IDEs.
+" CONFLICT with some plugins like tpope/Endwise
+inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 " }}
 
 " visual search {{

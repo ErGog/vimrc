@@ -67,6 +67,12 @@ Plug 'honza/vim-snippets'
 Plug 'tpope/vim-commentary'
 "im switch
 Plug 'brglng/vim-im-select'
+"add manual plugin to shell
+Plug 'vim-utils/vim-man'
+"add Ag search
+Plug 'junegunn/fzf.vim'
+"add autoformat
+Plug 'chiel92/vim-autoformat'
 call plug#end()
 
 filetype plugin on
