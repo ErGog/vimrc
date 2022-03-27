@@ -11,6 +11,8 @@ func! CompileAndRun()
                 exec '!time python %'
         elseif &filetype == 'sh'
                 :!time bash %
+        elseif &filetype == 'zsh'
+                :!time zsh %
         elseif &filetype=='lua'
                 exec '!time lua5.3 %'
         elseif &filetype=='go'
@@ -21,6 +23,6 @@ func! CompileAndRun()
                 exec '!dmd %'
                 exec '!time ./%<'
         elseif &filetype=='rust'
-                exec '!time cargo build'
+                exec '!time cargo run'
         endif
 endfunc
