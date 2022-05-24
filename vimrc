@@ -66,7 +66,7 @@ Plug 'honza/vim-snippets'
 "comment
 Plug 'tpope/vim-commentary'
 "im switch
-Plug 'brglng/vim-im-select'
+"Plug 'brglng/vim-im-select'
 "add manual plugin to shell
 Plug 'vim-utils/vim-man'
 "add Ag search

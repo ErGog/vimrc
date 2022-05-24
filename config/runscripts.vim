@@ -21,6 +21,6 @@ func! CompileAndRun()
                 exec '!dmd %'
                 exec '!time ./%<'
         elseif &filetype=='rust'
-                exec '!time cargo build'
+                exec '!time cargo run'
         endif
 endfunc
