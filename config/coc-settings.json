@@ -1,3 +1,4 @@
 {
-  "rust-analyzer.server.path":"/usr/bin/rust-analyzer"
+  "rust-analyzer.server.path":"/usr/bin/rust-analyzer",
+  "rust-client.disableRustup": true
 }
