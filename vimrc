@@ -1,3 +1,6 @@
+if has('nvim')
+	exe 'source ' . "~/.vim/autoload/plug.vim"
+endif
 call plug#begin('~/.vim/.plugged')
 "themes	
 Plug 'vim-airline/vim-airline'
@@ -73,6 +76,9 @@ Plug 'vim-utils/vim-man'
 Plug 'junegunn/fzf.vim'
 "add autoformat
 Plug 'chiel92/vim-autoformat'
+if has('nvim')
+  Plug 'github/copilot.vim'
+endif
 call plug#end()
 
 filetype plugin on
