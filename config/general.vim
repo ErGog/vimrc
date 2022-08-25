@@ -31,10 +31,13 @@ set nowritebackup
 set noimdisable
 set noswapfile
 set undofile
-if !isdirectory($HOME . "/.vim/.undodir/")
-  call mkdir($HOME . "/.vim/.undodir/")
+if has('nvim')
+  set undodir=$HOME/.nvim/.undodir
+  call mkdir($HOME . '/.nvim/.undodir','p')
+else
+  set undodir=$HOME/.vim/.undodir
+  call mkdir($HOME . '/.vim/.undodir','p')
 endif
-set undodir=$HOME/.vim/.undodir
 set fileformats=unix,dos
 set display+=lastline
 set formatoptions+=j
@@ -43,7 +46,7 @@ set diffopt=vertical
 set path+=**
 set tags^=./tags;.tags
 set tags+=gems.tags,stdlib.tags
-set showbreak=↪ 
+set showbreak=↪
 set shortmess=aFc
 set cmdheight=2
 set sessionoptions+=winsize

@@ -1,3 +1,4 @@
+" config nvim plug.vim
 if has('nvim')
 	exe 'source ' . "~/.vim/autoload/plug.vim"
 endif
