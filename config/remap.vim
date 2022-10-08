@@ -13,7 +13,7 @@
   nnoremap <expr> N  'nN'[v:searchforward]
   nnoremap <expr> k (v:count > 1 ? "m'" . v:count : '') . 'k'
   nnoremap <expr> j (v:count > 1 ? "m'" . v:count : '') . 'j'
-  nnoremap <space>rl :source ~/.vim/vimrc<CR>
+  nnoremap <space>rl :source ~/.vimrc<CR>
   nnoremap Y y$
   " no overwrite paste
   xnoremap p "_dP
@@ -31,6 +31,8 @@
   "inoremap <C-w> <C-[>diwa
   inoremap <C-h> <BS>
   inoremap <C-d> <Del>
+  inoremap <C-b> <Left>
+  inoremap <C-f> <Right>
   inoremap <C-u> <C-G>u<C-U>
   inoremap <C-a> <Home>
   inoremap <expr><C-e> pumvisible() ? "\<C-e>" : "\<End>"
@@ -100,8 +102,8 @@
   xmap <silent> <C-s> <Plug>(coc-range-select)
   xmap <silent> <S-TAB> <Plug>(coc-range-select-backword)
   xmap <silent> <TAB> <Plug>(coc-repl-sendtext)
-  nmap s <Plug>(coc-smartf-forward)
-  nmap S <Plug>(coc-smartf-backward)
+  " nmap s <Plug>(coc-smartf-forward)
+  " nmap S <Plug>(coc-smartf-backward)
   nmap [g <Plug>(coc-git-prevchunk)
   nmap ]g <Plug>(coc-git-nextchunk)
   nmap gs <Plug>(coc-git-chunkinfo)
@@ -118,45 +120,30 @@
   nnoremap <silent> K :call CocActionAsync('doHover')<CR>
   " remap for complete to use tab and <cr>
   inoremap <silent><expr> <TAB>
-        \ pumvisible() ? "\<C-n>" :
-        \ <SID>check_back_space() ? "\<TAB>" :
+        \ coc#pum#visible() ? coc#pum#next(1):
+        \ CheckBackspace() ? "\<Tab>" :
         \ coc#refresh()
+  inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+  inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+        \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+  function! CheckBackspace() abort
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~# '\s'
+  endfunction
+
   inoremap <silent><expr> <c-space> coc#refresh()
-  inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-  inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-  xmap if <Plug>(coc-funcobj-i)
-  xmap af <Plug>(coc-funcobj-a)
-  omap if <Plug>(coc-funcobj-i)
-  omap af <Plug>(coc-funcobj-a)
+
+  if !exists("*nvim_treesitter#foldexpr")
+    xmap if <Plug>(coc-funcobj-i)
+    xmap af <Plug>(coc-funcobj-a)
+    omap if <Plug>(coc-funcobj-i)
+    omap af <Plug>(coc-funcobj-a)
+  endif
   omap ig <Plug>(coc-git-chunk-inner)
   xmap ig <Plug>(coc-git-chunk-inner)
   omap ag <Plug>(coc-git-chunk-outer)
   xmap ag <Plug>(coc-git-chunk-outer)
-" }}
-"
-" fix complete with coc vim and snippets{{
-function! g:UltiSnips_Complete()
-    call UltiSnips#ExpandSnippet()
-    if g:ulti_expand_res == 0
-        if pumvisible()
-            return "\<C-n>"
-        else
-            call UltiSnips#JumpForwards()
-            if g:ulti_jump_forwards_res == 0
-               return "\<TAB>"
-            endif
-        endif
-    endif
-    return ""
-endfunction
-
-au BufEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsListSnippets="<c-e>"
-" this mapping Enter key to <C-y> to chose the current highlight item 
-" and close the selection list, same as other IDEs.
-" CONFLICT with some plugins like tpope/Endwise
-inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 " }}
 
 " visual search {{
@@ -179,11 +166,6 @@ function! s:visualSearch(direction)
   let       @/ = l:pattern
   let       @" = l:saved_reg
 endfunction
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
 " }}
 
 " list {{
@@ -202,19 +184,20 @@ endfunction
   nnoremap <silent><nowait> <space>q  :<C-u>CocList quickfix<CR>
   nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
   nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
-  nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
+  nnoremap <silent><nowait> <space>C  :<C-u>CocList commands<cr>
+  nnoremap <silent><nowait> <space>c  :<C-u>CocList vimcommands<cr>
   nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
   nnoremap <silent><nowait> <space>s  :<C-u>CocList symbols<cr>
   nnoremap <silent><nowait> <space>r  :<C-u>CocList mru<cr>
   nnoremap <silent><nowait> <space>R  :<C-u>LeaderfMru<cr>
   nnoremap <silent><nowait> <space>ff :<C-u>LeaderfFile<cr>
+  nnoremap <silent><nowait> <space>fy :<C-u>let @+="%"<CR>
   nnoremap <silent><nowait> <space>fd :LeaderfFile <C-R>=substitute(expand('%:p:h').'/', getcwd().'/', '', '')<CR><CR> 
   nnoremap <silent><nowait> <space>fa  :<C-u>LeaderfFile chrome/browser/<cr>
   nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
   nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
   nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
   nnoremap <silent><nowait> <space>m  :<C-u>CocList maps<cr>
-  nnoremap <silent><nowait> <space>b  :<C-u>VimspectorReset<Cr>
   nnoremap <silent><nowait> <space>ve  :<C-u>Vexplore<Cr>
   nnoremap <silent><nowait> <space>vv  :<C-u>e ./<Cr>
   " for normal mode - the word under the cursor
@@ -269,8 +252,8 @@ function s:setdown_mappings()
 endfunction
 " }}
 " gdb {{
-"au User TermdebugStartPost call s:setup_gdb_mappings()
-"au User TermdebugStopPost  call s:setdown_gdb_mappings()
+au User TermdebugStartPost call s:setup_gdb_mappings()
+au User TermdebugStopPre  call s:setdown_gdb_mappings()
 
 let g:is_gdb_mode = 0
 map <expr> <F4> <SID>toggle_gdb_mode()
@@ -288,19 +271,13 @@ endfunction
 
 function s:setup_gdb_mappings()
   let g:is_gdb_mode = 1
-  nmap c :<C-u>Continue<CR>
-  nmap b :<C-u>Break<CR>
-  nmap n :<C-u>Next<CR>
-  nmap s :<C-u>Step<CR>
-  nmap o :<C-u>Finish<CR>
+  map <C-_> :<C-u>Gdb<CR>
+  tmap <C-_> <Cmd>Source<CR>
 endfunction
 
 function s:setdown_gdb_mappings()
   let g:is_gdb_mode = 0
-  unmap c
-  unmap b
-  unmap n
-  unmap s
-  unmap o
+  unmap <C-_>
+  tunmap <C-_>
 endfunction
 " }}

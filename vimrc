@@ -28,8 +28,10 @@ Plug 'tpope/vim-surround' " 范围选择
 Plug 'tommcdo/vim-exchange' " Easy text exchange operator for Vim.
 Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-entire'
-"Go languages support
+"Go language support
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+"Rust language support
+Plug 'rust-lang/rust.vim'
 "Lion.vim is a tool for aligning text by some character.
 Plug 'tommcdo/vim-lion'
 "Code intent line
@@ -65,7 +67,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "fast mark and go to
 Plug 'kshenoy/vim-signature'
 "ultisnips
-Plug 'sirver/ultisnips'
+"Plug 'sirver/ultisnips'
 Plug 'honza/vim-snippets'
 "comment
 Plug 'tpope/vim-commentary'
