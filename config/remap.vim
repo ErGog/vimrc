@@ -24,6 +24,7 @@
   " nnoremap gca :Gcommit -a -v<CR>
   " nnoremap gcc :Gcommit -v -- <C-R>=expand('%')<CR><CR>
   nnoremap gP :CocCommand git.push<CR>
+  nnoremap gh :CocCommand clangd.switchSourceHeader<CR>
   nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
 " }}
 
