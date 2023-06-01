@@ -29,7 +29,7 @@ Plug 'tommcdo/vim-exchange' " Easy text exchange operator for Vim.
 Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-entire'
 "Go language support
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+"Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 "Rust language support
 Plug 'rust-lang/rust.vim'
 "Lion.vim is a tool for aligning text by some character.
