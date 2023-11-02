@@ -87,11 +87,14 @@
         \ 'coc-word@1.2.0',
         \ 'coc-lists',
         \ 'coc-git',
+        \ 'coc-sh',
         \ 'coc-marketplace',
         \ 'coc-vimlsp',
-        \ 'coc-clangd',
         \ 'coc-json',
         \ 'coc-tsserver',
+        \ 'coc-copilot',
+        \ 'coc-rust-analyzer',
+        \ 'coc-snippets',
         \ 'coc-pairs'
         \ ]
   let g:coc_watch_extensions = []

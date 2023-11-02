@@ -85,6 +85,8 @@ set grepformat=%f:%l:%c:%m
 set title
 set wildignorecase
 set noruler
+syntax enable
+filetype plugin indent on
 "set dictionary+=/usr/share/dict/words
 " terminal size
 if !has('nvim')

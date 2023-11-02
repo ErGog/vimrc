@@ -134,7 +134,7 @@ function! s:GrepArgs(...)
 endfunction
 
 function! s:EditVimrc(...)
-  let p = $HOME.'/.vim/config/'.(a:0 == 0 ? '.vimrc' : a:1)
+  let p = $HOME.'/.vim/config/'.(a:0 == 0 ? '../vimrc' : a:1)
   if getcwd() == $HOME.'/.vim/config'
     let p = p[len(getcwd()) + 1 : ]
   endif
