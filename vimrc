@@ -76,6 +76,7 @@ Plug 'tpope/vim-commentary'
 "add manual plugin to shell
 Plug 'vim-utils/vim-man'
 "add Ag search
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 "add autoformat
 Plug 'chiel92/vim-autoformat'
