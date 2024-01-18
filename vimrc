@@ -70,7 +70,7 @@ Plug 'kshenoy/vim-signature'
 "ultisnips
 " Plug 'sirver/ultisnips'
 " Plug 'honza/vim-snippets'
-Plug 'SirVer/ultisnips'
+" Plug 'SirVer/ultisnips'
 "comment
 Plug 'tpope/vim-commentary'
 "im switch
@@ -86,11 +86,15 @@ Plug 'github/copilot.vim'
 
 
 " vim-lsp {{
+" Plug 'Shougo/neosnippet.vim'
+" Plug 'Shougo/neosnippet-snippets'
 Plug 'prabirshrestha/vim-lsp'
-Plug 'thomasfaingnaert/vim-lsp-snippets'
-Plug 'thomasfaingnaert/vim-lsp-ultisnips'
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
+Plug 'prabirshrestha/asyncomplete-ultisnips.vim'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+" Plug 'prabirshrestha/asyncomplete-neosnippet.vim'
 " }}
 
 call plug#end()
