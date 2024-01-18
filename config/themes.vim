@@ -8,4 +8,4 @@ let g:airline#extensions#tabline#left_sep = ''
 let g:airline#extensions#tabline#right_sep = ''
 let g:airline_theme='deus'
 
-set background=dark
+:colorscheme nightfox

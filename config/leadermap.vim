@@ -4,6 +4,7 @@ let g:mapleader = ','
 " basic {{
   " Edit file in current file folder
   nnoremap <leader>n :Lexplore<CR>
+  nnoremap <leader>rn :LspRename<CR>
   nnoremap <leader>q :silent! Bdelete!<CR>
   nnoremap <leader>e :e <C-R>=substitute(expand('%:p:h').'/', getcwd().'/', '', '')<CR>
   "nnoremap <leader>e :LeaderfFile <C-R>=substitute(expand('%:p:h').'/', getcwd().'/', '', '')<CR><CR>
@@ -38,39 +39,6 @@ let g:mapleader = ','
   nnoremap <leader>bg :call <SID>ToggleBackground()<CR>
 " }}
 
-" plugin {{
-  "session helper
-  nmap <leader>ss :<C-u>CocCommand session.save<CR>
-  nmap <leader>sl :<C-u>CocCommand session.load<CR>
-  nmap <leader>sr :call <SID>SessionReload()<CR>
-  " svg.vim not used very often
-  nmap <leader>se <Plug>SvgEdit
-
-  " coc.nvim
-  nmap <leader>x  <Plug>(coc-cursors-operator)
-  nmap <leader>rn <Plug>(coc-rename)
-  nmap <leader>rf <Plug>(coc-refactor)
-  nmap <leader>ca <Plug>(coc-codelens-action)
-  xmap <leader>x  <Plug>(coc-convert-snippet)
-  xmap <leader>f  <Plug>(coc-format-selected)
-  nmap <leader>f :call CocAction('format')<CR>
-  xmap <leader>a  <Plug>(coc-codeaction-selected)
-  nmap <leader>a  <Plug>(coc-codeaction-selected)
-  nmap <leader>ac <Plug>(coc-codeaction-line)
-  nmap <leader>af <Plug>(coc-codeaction)
-  nmap <leader>di <Plug>(coc-diagnostic-info)
-  nmap <leader>qf <Plug>(coc-fix-current)
-
-  nmap <leader>te :call CocAction('runCommand', 'jest.singleTest')<CR>
-  nmap <leader>dr <Plug>(coc-diagnostic-related)
-  nmap <leader>ms <Plug>(coc-menu-show)
-
-  nmap <silent> <Leader>tr <Plug>(coc-translator-p)
-  vmap <silent> <Leader>tr <Plug>(coc-translator-pv)
-  nmap <silent> <Leader>tc :call <SID>En2zh('n')<CR>
-  vmap <silent> <Leader>tc :<C-u>call <SID>En2zh('v')<CR>
-" }}
-
 " grep by motion {{
 vnoremap <leader>g :<C-u>call <SID>GrepFromSelected(visualmode())<CR>
 nnoremap <leader>g :<C-u>set operatorfunc=<SID>GrepFromSelected<CR>g@
@@ -90,25 +58,6 @@ function! s:GrepFromSelected(type)
   execute 'CocList grep '.word
 endfunction
 " }}
-
-" functions {{
-function! s:SessionSave()
-  "if !empty(v:this_session)
-  "  execute 'SessionSave'
-  "else
-    "call feedkeys(':SessionSave ')
-  execute "CocCommand session.save"
-  "endif
-endfunction
-
-function! s:ToggleBackground()
-  if &background ==# 'light'
-    set background=dark
-  else
-    set background=light
-  endif
-  call SetStatusLine()
-endfunction
 
 function! s:NumberToggle()
   if(&number == 1) | set nu! | set rnu! | else | set rnu | set nu | endif
@@ -167,43 +116,6 @@ function! s:GenDoc()"{{
     startinsert!
   endif
 endfunction"}}
-
-function! s:Open()
-  let res = CocAction('openLink')
-  if res | return | endif
-  let line = getline('.')
-  " match url
-  let url = matchstr(line, '\vhttps?:\/\/[^)\]''" ]+')
-  if !empty(url)
-    let output = system('open '. url)
-  else
-    let mail = matchstr(line, '\v([A-Za-z0-9_\.-]+)\@([A-Za-z0-9_\.-]+)\.([a-z\.]+)')
-    if !empty(mail)
-      let output = system('open mailto:' . mail)
-    else
-      let output = system('open ' . expand('%:p:h'))
-    endif
-  endif
-  if v:shell_error && output !=# ""
-    echoerr output
-  endif
-endfunction
-
-function! s:sentence_at_pointer(mode)
-  let reg_save=@@
-
-  if a:mode == 'v'
-    silent normal! gvy`>
-  else
-    silent normal! mqyas`q
-  endif
-
-  let sentence = substitute(@@, "\\n", "", "g")
-  let sentence = escape(sentence, "\"`")
-
-  let @@ = reg_save
-  return sentence
-endfunction
 
 function! s:En2zh(mode)
   if !executable("trans")

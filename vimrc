@@ -4,10 +4,11 @@ if has('nvim')
 endif
 call plug#begin('~/.vim/.plugged')
 "themes
+Plug 'EdenEast/nightfox.nvim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'morhetz/gruvbox'
-Plug 'frazrepo/vim-rainbow'
+" Plug 'morhetz/gruvbox'
+" Plug 'frazrepo/vim-rainbow'
 "chinese doc support
 Plug 'yianwillis/vimcdoc'
 "vim languages icons
@@ -17,10 +18,11 @@ Plug 'neoclide/mycomment.vim'
 "Run a custom command in vim with current buffer and see the result side-by-side
 Plug 'chemzqm/vim-run'
 "Git Plugin's
-Plug 'tpope/vim-fugitive' " Git plugin
-Plug 'tpope/vim-rhubarb' " Hub plugin
-Plug 'lambdalisue/gina.vim' " It's a plugin to asynchronously control git repositories.
-Plug 'whiteinge/diffconflicts' " A better Vimdiff mergetool
+Plug 'airblade/vim-gitgutter'
+" Plug 'tpope/vim-fugitive' " Git plugin
+" Plug 'tpope/vim-rhubarb' " Hub plugin
+" Plug 'lambdalisue/gina.vim' " It's a plugin to asynchronously control git repositories.
+" Plug 'whiteinge/diffconflicts' " A better Vimdiff mergetool
 "Map . command
 Plug 'tpope/vim-repeat'
 "Key maps
@@ -55,20 +57,20 @@ Plug 'puremourning/vimspector'
 "vim search plugin
 Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
 "Code call tree plugin
-Plug 'hari-rangarajan/CCTree'
+"Plug 'hari-rangarajan/CCTree'
 "Code tags viewer
 Plug 'preservim/tagbar'
 "Code lsp tags viewer
 Plug 'liuchengxu/vista.vim'
 "Code gnu tag system plugin
-Plug 'vim-scripts/gtags.vim'
+"Plug 'vim-scripts/gtags.vim'
 "lsp pluin manager
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "fast mark and go to
 Plug 'kshenoy/vim-signature'
 "ultisnips
-"Plug 'sirver/ultisnips'
-Plug 'honza/vim-snippets'
+" Plug 'sirver/ultisnips'
+" Plug 'honza/vim-snippets'
+Plug 'SirVer/ultisnips'
 "comment
 Plug 'tpope/vim-commentary'
 "im switch
@@ -81,6 +83,16 @@ Plug 'junegunn/fzf.vim'
 "add autoformat
 Plug 'chiel92/vim-autoformat'
 Plug 'github/copilot.vim'
+
+
+" vim-lsp {{
+Plug 'prabirshrestha/vim-lsp'
+Plug 'thomasfaingnaert/vim-lsp-snippets'
+Plug 'thomasfaingnaert/vim-lsp-ultisnips'
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
+" }}
+
 call plug#end()
 
 filetype plugin on

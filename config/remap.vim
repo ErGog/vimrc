@@ -13,7 +13,7 @@
   nnoremap <expr> N  'nN'[v:searchforward]
   nnoremap <expr> k (v:count > 1 ? "m'" . v:count : '') . 'k'
   nnoremap <expr> j (v:count > 1 ? "m'" . v:count : '') . 'j'
-  nnoremap <space>rl :source ~/.vimrc<CR>
+  nnoremap <space>rl :source ~/.vim/vimrc<CR>
   nnoremap Y y$
   " no overwrite paste
   xnoremap p "_dP
@@ -85,67 +85,6 @@
   " vim-exchange
   "xmap gx <Plug>(Exchange)
 
-  " coc.nvim
-  "nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-	"nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
-  "inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
-  "inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
-
-  nmap <silent> <C-a> :call CocAction('runCommand', 'document.renameCurrentWord')<CR>
-  nmap <silent> [j :cn<CR>
-  nmap <silent> [k :cp<CR>
-  nmap <silent> [J :colder<CR>
-  nmap <silent> [K :cafter<CR>
-  nmap <silent> <C-c> <Plug>(coc-cursors-position)
-  "nmap <silent> <C-d> <Plug>(coc-cursors-word)
-  "xmap <silent> <C-d> <Plug>(coc-cursors-range)
-  nmap <silent> <C-s> <Plug>(coc-range-select)
-  xmap <silent> <C-s> <Plug>(coc-range-select)
-  xmap <silent> <S-TAB> <Plug>(coc-range-select-backword)
-  xmap <silent> <TAB> <Plug>(coc-repl-sendtext)
-  " nmap s <Plug>(coc-smartf-forward)
-  " nmap S <Plug>(coc-smartf-backward)
-  nmap [g <Plug>(coc-git-prevchunk)
-  nmap ]g <Plug>(coc-git-nextchunk)
-  nmap gs <Plug>(coc-git-chunkinfo)
-  nmap gm <Plug>(coc-git-commit)
-  imap <C-l> <Plug>(coc-snippets-expand)
-  xmap <C-l> <Plug>(coc-snippets-select)
-  nmap <silent> [c <Plug>(coc-diagnostic-prev)
-  nmap <silent> ]c <Plug>(coc-diagnostic-next)
-  nmap <silent> g<Tab> :call CocActionAsync('jumpDefinition', 'tabe')<CR>
-  nmap <silent> gd <Plug>(coc-definition)
-  nmap <silent> gy :call CocActionAsync('jumpTypeDefinition', v:false)<CR>
-  nmap <silent> gi :call CocActionAsync('jumpImplementation', v:false)<CR>
-  nmap <silent> gr :call CocActionAsync('jumpUsed', v:false)<CR>
-  nnoremap <silent> K :call CocActionAsync('doHover')<CR>
-  " remap for complete to use tab and <cr>
-  function! CheckBackspace() abort
-    let col = col('.') - 1
-    return !col || getline('.')[col - 1]  =~ '\s'
-  endfunction
-  " Insert <tab> when previous text is space, refresh completion if not.
-  inoremap <silent><expr> <TAB>
-	\ coc#pum#visible() ? coc#pum#next(1):
-	\ CheckBackspace() ? "\<Tab>" :
-	\ coc#refresh()
-  inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
-  inoremap <silent><expr> <CR> coc#pum#visible() ? coc#_select_confirm()
-				\: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-
-  "
-  if !exists("*nvim_treesitter#foldexpr")
-    xmap if <Plug>(coc-funcobj-i)
-    xmap af <Plug>(coc-funcobj-a)
-    omap if <Plug>(coc-funcobj-i)
-    omap af <Plug>(coc-funcobj-a)
-  endif
-  omap ig <Plug>(coc-git-chunk-inner)
-  xmap ig <Plug>(coc-git-chunk-inner)
-  omap ag <Plug>(coc-git-chunk-outer)
-  xmap ag <Plug>(coc-git-chunk-outer)
-" }}
-
 " visual search {{
   "  In visual mode when you press * or # to search for the current selection
   xnoremap    <silent> * :call <SID>visualSearch('f')<CR>
@@ -164,50 +103,31 @@ function! s:visualSearch(direction)
     execute 'normal! /' . l:pattern . '^M'
   endif
   let       @/ = l:pattern
-  let       @" = l:saved_reg
+let       @" = l:saved_reg
 endfunction
 " }}
 
-" list {{
-  nnoremap <silent> \r  :<C-u>CocList -N mru -A<cr>
-  nnoremap <silent><nowait> <space>h  :<C-u>CocList helptags<cr>
-  nnoremap <silent><nowait> <space>gs  :<C-u>:CocCommand git.chunkStage<CR>
-  nnoremap <silent><nowait> <space>gu  :<C-u>:CocCommand git.chunkUndo<CR>
-  nnoremap <silent><nowait> <space>gg  :<C-u>:G<CR>
-  nnoremap <silent><nowait> <space>t  :<C-u>CocList buffers<cr>
-  nnoremap <silent><nowait> <space>n  :V<cr>
-  nnoremap <silent><nowait> <space>N  :VL<cr>
-  nnoremap <silent><nowait> <space>y  :<C-u>CocList yank<cr>
-  nnoremap <silent><nowait> <space>u  :<C-u>CocList snippets<cr>
-  nnoremap <silent><nowait> <space>w  :exe 'CocList -A -I --normal --input='.expand('<cword>').' words -w'<CR>
-  nnoremap <silent><nowait> <space>l  :<C-u>CocList -I --ignore-case lines<CR>
-  nnoremap <silent><nowait> <space>q  :<C-u>CocList quickfix<CR>
-  nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
-  nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
-  nnoremap <silent><nowait> <space>C  :<C-u>CocList commands<cr>
-  nnoremap <silent><nowait> <space>c  :<C-u>CocList vimcommands<cr>
-  nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
-  nnoremap <silent><nowait> <space>s  :<C-u>CocList symbols<cr>
-  nnoremap <silent><nowait> <space>r  :<C-u>CocList mru<cr>
-  nnoremap <silent><nowait> <space>R  :<C-u>LeaderfMru<cr>
-  nnoremap <silent><nowait> <space>ff :<C-u>LeaderfFile<cr>
-  nnoremap <silent><nowait> <space>fy :<C-u>let @+="%"<CR>
-  nnoremap <silent><nowait> <space>fd :LeaderfFile <C-R>=substitute(expand('%:p:h').'/', getcwd().'/', '', '')<CR><CR> 
-  nnoremap <silent><nowait> <space>fa  :<C-u>LeaderfFile chrome/browser/<cr>
-  nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
-  nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
-  nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
-  nnoremap <silent><nowait> <space>m  :<C-u>CocList maps<cr>
-  nnoremap <silent><nowait> <space><space>  :Files<cr>
-  nnoremap <silent><nowait> <space>ve  :<C-u>Vexplore<Cr>
-  nnoremap <silent><nowait> <space>vv  :<C-u>e ./<Cr>
-  " for normal mode - the word under the cursor
-  nmap <Leader>di <Plug>VimspectorBalloonEval
-  " " for visual mode, the visually selected text
-  xmap <Leader>di <Plug>VimspectorBalloonEval
-  
-
+" fzf.vim {{
+nnoremap <silent><nowait> <space><space>  :Files<cr>
+nnoremap <silent><nowait> <space>g :GFiles<cr>
+nnoremap <silent><nowait> <space>b :Buffers<cr>
+nnoremap <silent><nowait> <space>h :History<cr>
+nnoremap <silent><nowait> <space>m :Maps<cr>
+nnoremap <silent><nowait> <space>o :Rg<space>
+nnoremap <silent><nowait> <space>a :Ag<space>
+nnoremap <silent><nowait> <space>t :Tags<cr>
+nnoremap <silent><nowait> <space>y :Lines<cr>
+nnoremap <silent><nowait> <space>z :Locate<cr>
+nnoremap <silent><nowait> <space>/ :BLines<cr>
+nnoremap <silent><nowait> <space>? :BCommits<cr>
+nnoremap <silent><nowait> <space>q :Commits<cr>
+nnoremap <silent><nowait> <space>l :BCommits<cr>
+"}}
+"
+" snippets{{
+let g:UltiSnipsExpandTrigger="<c-9>"
 " }}
+
 " debug {{
 
 let g:is_debug_mode = 0
@@ -281,4 +201,13 @@ function s:setdown_gdb_mappings()
   unmap <C-_>
   tunmap <C-_>
 endfunction
+" }}
+"
+" bracket {{
+inoremap { {}<Esc>ha
+inoremap ( ()<Esc>ha
+inoremap [ []<Esc>ha
+inoremap " ""<Esc>ha
+inoremap ' ''<Esc>ha
+inoremap ` ``<Esc>ha
 " }}

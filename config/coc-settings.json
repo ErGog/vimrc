@@ -1,6 +1,0 @@
-{
-  "rust-analyzer.server.path":"/usr/bin/rust-analyzer",
-  "rust-client.disableRustup": true,
-  "rust-analyzer.inlayHints.typeHints.enable":false,
-  "inlayHint.enableParameter":false
-}
