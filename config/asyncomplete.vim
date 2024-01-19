@@ -10,7 +10,6 @@ def g:ExpandSnippetOrReturn(): string
     return "\<C-Y>" # select without newline in popup
   endif
 enddef
-
 inoremap <expr> <CR> pumvisible() ? "<C-R>=ExpandSnippetOrReturn()<CR>" : "\<CR>"
 
 imap <c-space> <Plug>(asyncomplete_force_refresh)
@@ -38,3 +37,8 @@ if has('python3')
         \ 'completor': function('asyncomplete#sources#ultisnips#completor'),
         \ }))
 endif
+
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+set completeopt+=menuone
