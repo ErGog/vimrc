@@ -8,7 +8,7 @@ Plug 'EdenEast/nightfox.nvim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 " Plug 'morhetz/gruvbox'
-" Plug 'frazrepo/vim-rainbow'
+Plug 'frazrepo/vim-rainbow'
 "chinese doc support
 Plug 'yianwillis/vimcdoc'
 "vim languages icons
@@ -52,6 +52,8 @@ Plug 'AndrewRadev/splitjoin.vim'
 Plug 'mbbill/undotree'
 "automatically save changes
 Plug '907th/vim-auto-save'
+" auto pairs
+Plug 'jiangmiao/auto-pairs'
 "vim debug plugin
 Plug 'puremourning/vimspector'
 "vim search plugin
@@ -81,7 +83,8 @@ Plug 'vim-utils/vim-man'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 "add autoformat
-Plug 'chiel92/vim-autoformat'
+" Plug 'chiel92/vim-autoformat'
+Plug 'vim-autoformat/vim-autoformat'
 Plug 'github/copilot.vim'
 
 

@@ -202,12 +202,3 @@ function s:setdown_gdb_mappings()
   tunmap <C-_>
 endfunction
 " }}
-"
-" bracket {{
-inoremap { {}<Esc>ha
-inoremap ( ()<Esc>ha
-inoremap [ []<Esc>ha
-inoremap " ""<Esc>ha
-inoremap ' ''<Esc>ha
-inoremap ` ``<Esc>ha
-" }}
