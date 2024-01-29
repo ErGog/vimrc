@@ -3,12 +3,12 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 " inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
 
 def g:ExpandSnippetOrReturn(): string
-  var snippet = UltiSnips#ExpandSnippetOrJump()
-  if g:ulti_expand_or_jump_res > 0
-    return snippet
-  else
-    return "\<C-Y>" # select without newline in popup
-  endif
+	var snippet = UltiSnips#ExpandSnippetOrJump()
+	if g:ulti_expand_or_jump_res > 0
+		return snippet
+	else
+		return "\<C-Y>" # select without newline in popup
+	endif
 enddef
 inoremap <expr> <CR> pumvisible() ? "<C-R>=ExpandSnippetOrReturn()<CR>" : "\<CR>"
 
@@ -31,10 +31,17 @@ let g:lsp_diagnostics_signs_warning = {'text': '‼'} " icons require GUI
 let g:asyncomplete_auto_completeopt = 1
 
 if has('python3')
-    let g:UltiSnipsExpandTrigger="<c-e>"
-    call asyncomplete#register_source(asyncomplete#sources#ultisnips#get_source_options({
-        \ 'name': 'ultisnips',
-        \ 'allowlist': ['*'],
-        \ 'completor': function('asyncomplete#sources#ultisnips#completor'),
-        \ }))
+	let g:UltiSnipsExpandTrigger="<c-e>"
+	call asyncomplete#register_source(asyncomplete#sources#ultisnips#get_source_options({
+				\ 'name': 'ultisnips',
+				\ 'allowlist': ['*'],
+				\ 'completor': function('asyncomplete#sources#ultisnips#completor'),
+				\ }))
 endif
+
+au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#file#get_source_options({
+			\ 'name': 'file',
+			\ 'allowlist': ['*'],
+			\ 'priority': 10,
+			\ 'completor': function('asyncomplete#sources#file#completor')
+			\ }))
