@@ -1,6 +1,6 @@
 "vim-autoformat{{
 nnoremap <C-f> :Autoformat<CR>
-autocmd FileType rust au BufWrite * :Autoformat
+" autocmd FileType rust au BufWrite * :Autoformat
 " autocmd TextChanged,TextChangedI <buffer> silent write
 "}}
 
@@ -22,4 +22,8 @@ let g:UltiSnipsExpandTrigger="<c-h>"
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 set completeopt+=menuone
+"}}
+
+"auto save{{
+let g:auto_save = 1
 "}}
