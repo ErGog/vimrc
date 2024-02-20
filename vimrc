@@ -61,12 +61,11 @@ Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
 "Code call tree plugin
 "Plug 'hari-rangarajan/CCTree'
 "Code tags viewer
-Plug 'preservim/tagbar'
+" Plug 'preservim/tagbar'
 "Code lsp tags viewer
 Plug 'liuchengxu/vista.vim'
 "Code gnu tag system plugin
 "Plug 'vim-scripts/gtags.vim'
-"lsp pluin manager
 "fast mark and go to
 Plug 'kshenoy/vim-signature'
 "ultisnips
@@ -89,19 +88,16 @@ Plug 'github/copilot.vim'
 
 
 " vim-lsp {{
-" Plug 'Shougo/neosnippet.vim'
-" Plug 'Shougo/neosnippet-snippets'
 Plug 'prabirshrestha/vim-lsp'
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
+Plug 'prabirshrestha/asyncomplete-file.vim'
+
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'prabirshrestha/async.vim'
 Plug 'thomasfaingnaert/vim-lsp-snippets'
 Plug 'thomasfaingnaert/vim-lsp-ultisnips'
-Plug 'prabirshrestha/asyncomplete-ultisnips.vim'
-" Plug 'SirVer/ultisnips'
-" Plug 'prabirshrestha/asyncomplete-neosnippet.vim'
 " }}
 
 call plug#end()
