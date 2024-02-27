@@ -111,3 +111,5 @@ if !has('nvim') && !has('macvim')
 endif
 " }}
 " vim: set sw=2 ts=2 sts=2 et tw=78 foldmarker={{,}} foldmethod=marker foldlevel=0:
+
+let $IS_VIM=1

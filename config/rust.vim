@@ -20,14 +20,12 @@ if executable('rust-analyzer')
         \ })
 endif
 
+" " Check filetype.
+" autocmd VimEnter * call CheckCargoToml()
 
-
-" Check filetype.
-autocmd VimEnter * call CheckCargoToml()
-
-function! CheckCargoToml()
-  let l:cargo_toml = expand('Cargo.toml')
-  if filereadable(l:cargo_toml)
-    setfiletype rust
-  endif
-endfunction
+" function! CheckCargoToml()
+"   let l:cargo_toml = expand('Cargo.toml')
+"   if filereadable(l:cargo_toml)
+"     setfiletype rust
+"   endif
+" endfunction

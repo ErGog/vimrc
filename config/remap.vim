@@ -10,3 +10,13 @@ cnoremap <C-e> <End>
 cnoremap <C-d> <Del>
 cnoremap <C-h> <BS>
 inoremap hh <Esc>
+
+" terminal{{
+" vim-powered terminal in split window
+map <Leader>t :term ++close<cr>
+tmap <Leader>t <c-w>:term ++close<cr>
+
+" vim-powered terminal in new tab
+map <Leader>T :tab term ++close<cr>
+tmap <Leader>T <c-w>:tab term ++close<cr>
+" }}
