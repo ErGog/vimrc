@@ -95,3 +95,9 @@ let g:vista#renderer#icons = {
 \  }
 nnoremap <silent><nowait> <space>v :Vista!!<cr>
 "}}
+
+"{{
+" let g:AutoPairs['<']='>'
+let g:AutoPairs={'(':')', '[':']', '{':'}',"'":"'",'"':'"', '`':'`'}
+let g:AutoPairs['<']='>'
+"}}

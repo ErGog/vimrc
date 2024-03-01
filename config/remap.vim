@@ -11,6 +11,9 @@ cnoremap <C-d> <Del>
 cnoremap <C-h> <BS>
 inoremap hh <Esc>
 
+" buffer next
+map <c-b> :bn<cr>
+
 " terminal{{
 " vim-powered terminal in split window
 map <Leader>t :term ++close<cr>

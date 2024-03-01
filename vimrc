@@ -5,6 +5,7 @@ endif
 call plug#begin('~/.vim/.plugged')
 "themes
 Plug 'EdenEast/nightfox.nvim'
+Plug 'bling/vim-bufferline'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 " Plug 'morhetz/gruvbox'
@@ -19,7 +20,7 @@ Plug 'neoclide/mycomment.vim'
 Plug 'chemzqm/vim-run'
 "Git Plugin's
 Plug 'airblade/vim-gitgutter'
-" Plug 'tpope/vim-fugitive' " Git plugin
+Plug 'tpope/vim-fugitive' " Git plugin
 " Plug 'tpope/vim-rhubarb' " Hub plugin
 " Plug 'lambdalisue/gina.vim' " It's a plugin to asynchronously control git repositories.
 " Plug 'whiteinge/diffconflicts' " A better Vimdiff mergetool
@@ -57,7 +58,7 @@ Plug 'jiangmiao/auto-pairs'
 "vim debug plugin
 Plug 'puremourning/vimspector'
 "vim search plugin
-Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
+" Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
 "Code call tree plugin
 "Plug 'hari-rangarajan/CCTree'
 "Code tags viewer
@@ -85,6 +86,7 @@ Plug 'junegunn/fzf.vim'
 " Plug 'chiel92/vim-autoformat'
 Plug 'vim-autoformat/vim-autoformat'
 Plug 'github/copilot.vim'
+Plug 'vim-ctrlspace/vim-ctrlspace'
 
 
 " vim-lsp {{
