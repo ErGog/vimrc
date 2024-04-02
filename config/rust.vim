@@ -10,9 +10,16 @@ if executable('rust-analyzer')
         \         'enable': v:true,
         \       },
         \     },
+        \     'rust-analyzer.cargo.runBuildScriptsCommand': [
+        \       'cargo',
+        \       'check',
+        \       '--quiet',
+        \       '--message-format=json'
+        \     ],
         \     'procMacro': {
         \       'enable': v:true,
         \     },
+        \     'rust-analyzer.disable-cargo-workspace-and-only-use-its-glob-result-as-linkedProjects-input':'true',
         \     'checkOnSave': {
         \       'command': 'clippy',
         \     },
@@ -20,6 +27,14 @@ if executable('rust-analyzer')
         \ })
 endif
 
+
+" \     'workspace.ignoredFolders': [
+" \       '.git',
+" \       'target',
+" \       '$HOME/.rustup/**',
+" \       '$HOME/.cargo/**',
+" \       '$HOME'
+" \     ],
 " " Check filetype.
 " autocmd VimEnter * call CheckCargoToml()
 

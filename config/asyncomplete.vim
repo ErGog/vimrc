@@ -19,6 +19,7 @@ let g:lsp_diagnostics_highlights_enabled = 0
 let g:lsp_diagnostics_signs_error = {'text': '✗'}
 let g:lsp_diagnostics_signs_warning = {'text': '‼'} " icons require GUI
 let g:asyncomplete_auto_completeopt = 1
+let g:lsp_float_max_width = 0
 
 " File completement register
 au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#file#get_source_options({
