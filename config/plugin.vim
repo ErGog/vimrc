@@ -28,7 +28,7 @@ let g:auto_save = 1
 "}}
 "
 " fzf.vim {{
-let $FZF_DEFAULT_COMMAND =  "fd --exclude target --exclude .git"
+let $FZF_DEFAULT_COMMAND =  "fd"
 nnoremap <silent><nowait> <space><space>  :Files<cr>
 " nnoremap <silent><nowait> <space>g :GFiles<cr>
 nnoremap <silent><nowait> <space>b :Buffers<cr>
@@ -101,3 +101,18 @@ nnoremap <silent><nowait> <space>v :Vista!!<cr>
 let g:AutoPairs={'(':')', '[':']', '{':'}',"'":"'",'"':'"', '`':'`'}
 let g:AutoPairs['<']='>'
 "}}
+"
+"
+" vim-translator 
+""" Configuration example
+" Echo translation in the cmdline
+nmap <silent> <Leader>y <Plug>Translate
+vmap <silent> <Leader>y <Plug>TranslateV
+" Display translation in a window
+nmap <silent> <Leader>w <Plug>TranslateW
+vmap <silent> <Leader>w <Plug>TranslateWV
+" Replace the text with translation
+nmap <silent> <Leader>r <Plug>TranslateR
+vmap <silent> <Leader>r <Plug>TranslateRV
+" Translate the text in clipboard
+nmap <silent> <Leader>x <Plug>TranslateX

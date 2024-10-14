@@ -43,7 +43,7 @@ Plug 'Yggdroot/indentLine'
 Plug 'dhruvasagar/vim-zoom'
 "Vim-cool disables search highlighting when you are done searching and
 "re-enables it when you search again.
-Plug 'romainl/vim-cool' " search improve
+" Plug 'romainl/vim-cool' " search improve
 "A plugin for plugin developers to get the version of Vim and
 "Neovim that introduced or removed features.
 Plug 'tweekmonster/helpful.vim'
@@ -56,7 +56,7 @@ Plug '907th/vim-auto-save'
 " auto pairs
 Plug 'jiangmiao/auto-pairs'
 "vim debug plugin
-Plug 'puremourning/vimspector'
+" Plug 'puremourning/vimspector'
 "vim search plugin
 " Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
 "Code call tree plugin
@@ -68,7 +68,7 @@ Plug 'liuchengxu/vista.vim'
 "Code gnu tag system plugin
 "Plug 'vim-scripts/gtags.vim'
 "fast mark and go to
-Plug 'kshenoy/vim-signature'
+" Plug 'kshenoy/vim-signature'
 "ultisnips
 " Plug 'sirver/ultisnips'
 " Plug 'honza/vim-snippets'
@@ -87,7 +87,10 @@ Plug 'junegunn/fzf.vim'
 Plug 'vim-autoformat/vim-autoformat'
 Plug 'github/copilot.vim'
 Plug 'vim-ctrlspace/vim-ctrlspace'
-
+" translate
+Plug 'voldikss/vim-translator'
+" manual support
+Plug 'vim-utils/vim-man'
 
 " vim-lsp {{
 Plug 'prabirshrestha/vim-lsp'
